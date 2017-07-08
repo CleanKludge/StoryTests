@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace StoryTests
 {
@@ -11,7 +12,7 @@ namespace StoryTests
             return new Prolog<TContext>(context);
         }
 
-        public static Prolog<TContext> A<TContext>(TContext context) where TContext : IContext
+        public static Prolog<TContext> A<TContext>(TContext context) where TContext : IDisposable
         {
             return new Prolog<TContext>(context);
         }

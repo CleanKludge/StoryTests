@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace StoryTests
 {
-    public class Prolog<TContext> where TContext : IContext
+    public class Prolog<TContext> where TContext : IDisposable
     {
         private readonly TContext _context;
 

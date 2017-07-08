@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace StoryTests
 {
-    public class Story<TContext, TResponse> where TContext : IContext
+    public class Story<TContext, TResponse> where TContext : IDisposable
     {
         private readonly TResponse _response;
         private readonly TContext _context;
@@ -245,7 +245,7 @@ namespace StoryTests
         }
     }
 
-    public class Story<TContext> where TContext : IContext
+    public class Story<TContext> where TContext : IDisposable
     {
         private readonly TContext _context;
 
