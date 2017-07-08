@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace StoryTests
 {
-    public interface IContext : IDisposable
+    public interface IStoryContext : IDisposable
     {
         Task Initialise();
     }

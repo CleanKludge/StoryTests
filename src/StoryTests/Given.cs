@@ -5,7 +5,7 @@ namespace StoryTests
 {
     public class Given
     {
-        public static async Task<Prolog<TContext>> A<TContext>() where TContext : IContext, new()
+        public static async Task<Prolog<TContext>> A<TContext>() where TContext : IStoryContext, new()
         {
             var context = new TContext();
             await context.Initialise();

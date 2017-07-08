@@ -3,18 +3,18 @@ using System.Threading.Tasks;
 
 namespace StoryTests
 {
-    public class Story<TContext, TResponse> where TContext : IDisposable
+    public class Story<TContext, TResult> where TContext : IDisposable
     {
-        private readonly TResponse _response;
+        private readonly TResult _response;
         private readonly TContext _context;
 
-        public Story(TContext context, TResponse response)
+        public Story(TContext context, TResult response)
         {
             _context = context;
             _response = response;
         }
 
-        public Story<TContext, TResponse> And(Action<TResponse> func)
+        public Story<TContext, TResult> And(Action<TResult> func)
         {
             try
             {
@@ -28,7 +28,7 @@ namespace StoryTests
             }
         }
 
-        public async Task<Story<TContext, TResponse>> And(Func<TResponse, Task> func)
+        public async Task<Story<TContext, TResult>> And(Func<TResult, Task> func)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace StoryTests
             }
         }
 
-        public Story<TContext, TResponse> And(Action<TContext> func)
+        public Story<TContext, TResult> And(Action<TContext> func)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace StoryTests
             }
         }
 
-        public async Task<Story<TContext, TResponse>> And(Func<TContext, Task> func)
+        public async Task<Story<TContext, TResult>> And(Func<TContext, Task> func)
         {
             try
             {
@@ -70,7 +70,7 @@ namespace StoryTests
             }
         }
 
-        public Story<TContext, TResponse> And(Action<TContext, TResponse> func)
+        public Story<TContext, TResult> And(Action<TContext, TResult> func)
         {
             try
             {
@@ -84,7 +84,7 @@ namespace StoryTests
             }
         }
 
-        public async Task<Story<TContext, TResponse>> And(Func<TContext, TResponse, Task> func)
+        public async Task<Story<TContext, TResult>> And(Func<TContext, TResult, Task> func)
         {
             try
             {
@@ -99,7 +99,7 @@ namespace StoryTests
         }
 
 
-        public Story<TContext, TResponse> And(Action func)
+        public Story<TContext, TResult> And(Action func)
         {
             try
             {
@@ -113,7 +113,7 @@ namespace StoryTests
             }
         }
 
-        public async Task<Story<TContext, TResponse>> And(Func<Task> func)
+        public async Task<Story<TContext, TResult>> And(Func<Task> func)
         {
             try
             {
@@ -127,7 +127,7 @@ namespace StoryTests
             }
         }
 
-        public Story<TContext, TResponse> Then(Action<TContext> func)
+        public Story<TContext, TResult> Then(Action<TContext> func)
         {
             try
             {
@@ -141,7 +141,7 @@ namespace StoryTests
             }
         }
 
-        public async Task<Story<TContext, TResponse>> Then(Func<TContext, Task> func)
+        public async Task<Story<TContext, TResult>> Then(Func<TContext, Task> func)
         {
             try
             {
@@ -155,12 +155,12 @@ namespace StoryTests
             }
         }
 
-        public Story<TContext, TResponse> Then(Action<TResponse> func)
+        public Story<TContext, TResult> Then(Action<TResult> func)
         {
             try
             {
                 func(_response);
-                return new Story<TContext, TResponse>(_context, _response);
+                return new Story<TContext, TResult>(_context, _response);
             }
             catch(Exception)
             {
@@ -169,12 +169,12 @@ namespace StoryTests
             }
         }
 
-        public async Task<Story<TContext, TResponse>> Then(Func<TResponse, Task> func)
+        public async Task<Story<TContext, TResult>> Then(Func<TResult, Task> func)
         {
             try
             {
                 await func(_response);
-                return new Story<TContext, TResponse>(_context, _response);
+                return new Story<TContext, TResult>(_context, _response);
             }
             catch(Exception)
             {
@@ -183,7 +183,7 @@ namespace StoryTests
             }
         }
 
-        public Story<TContext, TResponse> Then(Action<TContext, TResponse> func)
+        public Story<TContext, TResult> Then(Action<TContext, TResult> func)
         {
             try
             {
@@ -197,7 +197,7 @@ namespace StoryTests
             }
         }
 
-        public async Task<Story<TContext, TResponse>> Then(Func<TContext, TResponse, Task> func)
+        public async Task<Story<TContext, TResult>> Then(Func<TContext, TResult, Task> func)
         {
             try
             {
@@ -211,7 +211,7 @@ namespace StoryTests
             }
         }
 
-        public Story<TContext, TResponse> Then(Action func)
+        public Story<TContext, TResult> Then(Action func)
         {
             try
             {
@@ -225,7 +225,7 @@ namespace StoryTests
             }
         }
 
-        public async Task<Story<TContext, TResponse>> Then(Func<Task> func)
+        public async Task<Story<TContext, TResult>> Then(Func<Task> func)
         {
             try
             {

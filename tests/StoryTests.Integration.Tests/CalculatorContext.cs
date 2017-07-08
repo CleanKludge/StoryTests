@@ -2,7 +2,7 @@
 
 namespace StoryTests.Integration.Tests
 {
-    public class CalculatorContext : IContext
+    public class CalculatorContext : IStoryContext
     {
         public ICalculator Client { get; set; }
 
