@@ -8,6 +8,7 @@ namespace StoryTests.Integration.Tests
 
         public Task Initialise()
         {
+            Client = new Calculator();
             return Task.CompletedTask;
         }
 
